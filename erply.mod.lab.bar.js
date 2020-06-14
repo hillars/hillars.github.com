@@ -9,7 +9,7 @@ $(document).ready(function() {
     
     function android_connect() {
         var ua = navigator.userAgent;
-        alert(len(ua));
+        alert(ua.length);
         alert(navigator.userAgent);
         if(ua.indexOf('Android') !== -1) { // tablet Android
             alert("Connect Android to websocket");
