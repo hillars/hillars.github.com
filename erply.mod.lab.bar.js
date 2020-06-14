@@ -9,6 +9,7 @@ $(document).ready(function() {
     
     function android_connect() {
         if(ua.indexOf('Android') !== -1) { // tablet Android
+            alert("Connect Android to websocket");
             if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
                 console.log("Disconnecting websocket");
                 ErplyEPSI.disconnect();
