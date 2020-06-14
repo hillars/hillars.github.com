@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     console.log("Navi " + ua);
 
-    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
+    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3" && ua.indexOf('Android') == -1) { // DEsktop rPI
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
             console.log("Disconnecting websocket");
             ErplyEPSI.disconnect();
@@ -32,11 +32,11 @@ $(document).ready(function() {
 
     }
 
-    if(ua.indexOf('Android') !== -1) {
+    if(ua.indexOf('Android') !== -1) { // tablet Android
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
             console.log("Disconnecting websocket");
             alert("Should disconnect?);
-            //ErplyEPSI.disconnect();
+            ErplyEPSI.disconnect();
         }
         ErplyEPSI.getWebSocketHost = function() {
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
             return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
         }
         //alert(ErplyEPSI.getWebSocketHost());
-        //ErplyEPSI.openWebSocket();
+        ErplyEPSI.openWebSocket();
     }
 
 
