@@ -2,9 +2,26 @@ $(document).ready(function() {
     localStorage.setItem("showconsole", 0);
 
     setInterval(tick, 5000);
+    setTimeout(android_connect, 3000);
     var ua = navigator.userAgent;
 
     console.log("Navi " + ua);
+    
+    function android_connect() {
+        if(ua.indexOf('Android') !== -1) { // tablet Android
+            if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
+                console.log("Disconnecting websocket");
+                ErplyEPSI.disconnect();
+            }
+            ErplyEPSI.getWebSocketHost = function() {
+
+                // ("https:" === document.location.protocol ? "wss://" : "ws://") + "127.0.0.1:5656/" + channel_name
+                return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
+            }
+            //alert(ErplyEPSI.getWebSocketHost());
+            ErplyEPSI.openWebSocket();
+        }
+    }
 
     if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3" && ua.indexOf('Android') == -1) { // DEsktop rPI
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
@@ -32,19 +49,7 @@ $(document).ready(function() {
 
     }
 
-    if(ua.indexOf('Android') !== -1) { // tablet Android
-        if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
-            console.log("Disconnecting websocket");
-            ErplyEPSI.disconnect();
-        }
-        ErplyEPSI.getWebSocketHost = function() {
-
-            // ("https:" === document.location.protocol ? "wss://" : "ws://") + "127.0.0.1:5656/" + channel_name
-            return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
-        }
-        //alert(ErplyEPSI.getWebSocketHost());
-        ErplyEPSI.openWebSocket();
-    }
+    
 
 
 
@@ -119,6 +124,8 @@ $(document).ready(function() {
         console.log(ErplyEPSI.getWebSocketHost());
         ErplyEPSI.openWebSocket();
     }
+    
+    
 
     function tick() {
         //get the mins of the current time
