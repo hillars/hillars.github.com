@@ -7,7 +7,7 @@ $(document).ready(function() {
     console.log("Navi " + ua);
     alert(ua);
 
-    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3" && ) { // DEsktop rPI
+    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3" && ua.indexOf('Android') == -1) { // DEsktop rPI
         alert(13);
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
             console.log("Disconnecting websocket");
