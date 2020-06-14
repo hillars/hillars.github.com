@@ -35,7 +35,8 @@ $(document).ready(function() {
     if(ua.indexOf('Android') !== -1) {
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
             console.log("Disconnecting websocket");
-            ErplyEPSI.disconnect();
+            alert("Should disconnect?);
+            //ErplyEPSI.disconnect();
         }
         ErplyEPSI.getWebSocketHost = function() {
 
@@ -43,7 +44,7 @@ $(document).ready(function() {
             return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
         }
         //alert(ErplyEPSI.getWebSocketHost());
-        ErplyEPSI.openWebSocket();
+        //ErplyEPSI.openWebSocket();
     }
 
 
