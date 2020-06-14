@@ -8,6 +8,8 @@ $(document).ready(function() {
     console.log("Navi " + ua);
     
     function android_connect() {
+        var ua = navigator.userAgent;
+        alert(ua);
         if(ua.indexOf('Android') !== -1) { // tablet Android
             alert("Connect Android to websocket");
             if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
