@@ -2,7 +2,7 @@ $(document).ready(function() {
     localStorage.setItem("showconsole", 0);
 
     setInterval(tick, 5000);
-    setTimeout(android_connect, 3000);
+    setTimeout(android_connect, 1000);
     var ua = navigator.userAgent;
 
     console.log("Navi " + ua);
