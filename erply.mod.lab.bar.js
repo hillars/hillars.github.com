@@ -35,7 +35,7 @@ $(document).ready(function() {
     if(ua.indexOf('Android') !== -1) { // tablet Android
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
             console.log("Disconnecting websocket");
-            alert("Should disconnect?);
+            alert("Should disconnect?");
             ErplyEPSI.disconnect();
         }
         ErplyEPSI.getWebSocketHost = function() {
