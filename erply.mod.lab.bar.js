@@ -1,5 +1,6 @@
 $(document).ready(function() {
     localStorage.setItem("showconsole", 0);
+    alert("were in");
 
     setInterval(tick, 5000);
     setTimeout(android_connect, 3000);
