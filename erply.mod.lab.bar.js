@@ -494,6 +494,8 @@ $(document).ready(function() {
         $( ".btn-product .product-price:contains('5.00')").parent().css("background-color", "#bee4f4");
 
         $( ".modal-footer button.payment-card").css("background-color", "#EEEE00");
+        
+        if (TSPOS.Model.Employee.groupID == "9") $("button[data-view-type='close-day']").hide();
     
 
         toggleSpecialGroups();
