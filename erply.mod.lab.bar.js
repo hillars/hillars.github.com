@@ -48,6 +48,17 @@ $(document).ready(function() {
         ErplyEPSI.openWebSocket();
 
     }
+    
+    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-5") {
+        ErplyEPSI.getWebSocketHost = function() {
+
+            // ("https:" === document.location.protocol ? "wss://" : "ws://") + "127.0.0.1:5656/" + channel_name
+            return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.71:5656/"
+        }
+        //alert(ErplyEPSI.getWebSocketHost());
+        ErplyEPSI.openWebSocket();
+
+    }
 
     
 
