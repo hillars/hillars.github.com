@@ -94,6 +94,11 @@ $(document).ready(function() {
     
 
     if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
+        
+        ErplyEPSI.getWebSocketHost = function() {
+            return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
+        }
+        
 
         let device
 
