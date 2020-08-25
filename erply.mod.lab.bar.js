@@ -23,7 +23,7 @@ $(document).ready(function() {
                 }
 
                 // ("https:" === document.location.protocol ? "wss://" : "ws://") + "127.0.0.1:5656/" + channel_name
-                return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
+                //return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
             }
             //alert(ErplyEPSI.getWebSocketHost());
             ErplyEPSI.openWebSocket();
@@ -95,7 +95,7 @@ $(document).ready(function() {
 
     
 
-    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
+    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2341342342") {
         
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
             console.log("Disconnecting websocket");
