@@ -25,14 +25,18 @@ $(document).ready(function() {
             }
             //alert(ErplyEPSI.getWebSocketHost());
             ErplyEPSI.openWebSocket();
-            if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
-                if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
-                    ErplyEPSI.websocket.send("request=setup&client_id=sk10-3&id=setup-sk10-3");
-                } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
-                    ErplyEPSI.websocket.send("request=setup&client_id=sk10-2&id=setup-sk10-2");
+            
+            ErplyEPSI.websocket.onopen = function() {
+                if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
+                    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
+                        ErplyEPSI.websocket.send("request=setup&client_id=sk10-3&id=setup-sk10-3");
+                    } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
+                        ErplyEPSI.websocket.send("request=setup&client_id=sk10-2&id=setup-sk10-2");
+                    }
+
                 }
-                
             }
+            
             
         }
     }
