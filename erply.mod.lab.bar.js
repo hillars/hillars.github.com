@@ -144,7 +144,7 @@ $(document).ready(function() {
             
         }
 
-        console.log(ErplyEPSI.getWebSocketHost());
+        /*console.log(ErplyEPSI.getWebSocketHost());
 
         if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
             console.log("Disconnecting websocket");
@@ -160,7 +160,7 @@ $(document).ready(function() {
         }
 
         console.log(ErplyEPSI.getWebSocketHost());
-        ErplyEPSI.openWebSocket();
+        ErplyEPSI.openWebSocket();*/
     }
     
     
