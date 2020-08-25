@@ -27,15 +27,24 @@ $(document).ready(function() {
             ErplyEPSI.openWebSocket();
             
             ErplyEPSI.websocket.onopen = function() {
-                if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
-                    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
-                        ErplyEPSI.websocket.send("request=setup&client_id=sk10-3&id=setup-sk10-3");
-                    } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
-                        ErplyEPSI.websocket.send("request=setup&client_id=sk10-2&id=setup-sk10-2");
-                    }
-
+                var e = {
+                    request : "getPermissions"
+                };
+                ErplyEPSI.request(e).done(function(e) {
+                    ErplyEPSI.server_version = e.server_version, 0 == e.permission_to_access_filesystem && ERPLY.Confirm({
+                        title : __t("EDI status"), body : __t("External Device Integrations has no access to filesystem, configuration cannot be stored."), buttons : ["yes"]
+                    })
+                }), ErplyEPSI.updateCurrentConfiguration(), ErplyEPSI.localServerUp=!0
+                
+                if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
+                    ErplyEPSI.websocket.send("request=setup&client_id=sk10-3&id=setup-sk10-3");
+                } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
+                    ErplyEPSI.websocket.send("request=setup&client_id=sk10-2&id=setup-sk10-2");
                 }
+
+                
             }
+            
             
             
         }
