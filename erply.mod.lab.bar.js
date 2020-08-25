@@ -14,12 +14,26 @@ $(document).ready(function() {
                 ErplyEPSI.disconnect();
             }
             ErplyEPSI.getWebSocketHost = function() {
+                if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
+                    return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
+                } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
+                    return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
+                }
 
                 // ("https:" === document.location.protocol ? "wss://" : "ws://") + "127.0.0.1:5656/" + channel_name
                 return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
             }
             //alert(ErplyEPSI.getWebSocketHost());
             ErplyEPSI.openWebSocket();
+            if (ErplyEPSI.websocket && ErplyEPSI.websocket.readyState == ErplyEPSI.websocket.OPEN) {
+                if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
+                    ErplyEPSI.websocket.send("request=setup&client_id=sk10-3&id=setup-sk10-3");
+                } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
+                    ErplyEPSI.websocket.send("request=setup&client_id=sk10-2&id=setup-sk10-2");
+                }
+                
+            }
+            
         }
     }
 
