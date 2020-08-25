@@ -93,7 +93,7 @@ $(document).ready(function() {
 
     
 
-    if (TSPOS.Model.POS.name == "Lab Club OÜ / Labor VP8-1") {
+    if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
 
         let device
 
