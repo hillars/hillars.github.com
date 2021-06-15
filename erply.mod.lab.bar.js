@@ -15,16 +15,18 @@ $(document).ready(function() {
                 console.log("Disconnecting websocket");
                 ErplyEPSI.disconnect();
             }
+            
             ErplyEPSI.getWebSocketHost = function() {
                 if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-3") {
                     return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
-                } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-2") {
-                    return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
+                } else if (TSPOS.Model.POS.name == "Lab OÜ / Labor SK10-1") {
+                    return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.11:5656/"
                 }
 
                 // ("https:" === document.location.protocol ? "wss://" : "ws://") + "127.0.0.1:5656/" + channel_name
                 //return ("https:" === document.location.protocol ? "wss://" : "ws://") + "192.168.1.13:5656/"
             }
+            
             //alert(ErplyEPSI.getWebSocketHost());
             ErplyEPSI.openWebSocket();
             
